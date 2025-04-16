@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Editor</title>
+  <script
+    type="text/javascript"
+    src="./tinymceCLASSIC/js/tinymce/tinymce.min.js"
+    referrerpolicy="origin">
+  </script>
+  <script
+    type="text/javascript"
+    src="./tinymceCLASSIC/js/tinymce/auto.js"
+    referrerpolicy="origin">
+  </script>
+  <script type="text/javascript">
+  </script>
+  <script type="text/javascript">
+  tinymce.init({
+    selector: '#myTextarea',
+    width: 1500,
+    height: 200,
+    plugins: [
+      'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+      'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
+      'media', 'table', 'emoticons', 'template', 'help'
+    ],
+    toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+      'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+      'forecolor backcolor emoticons | help',
+    menu: {
+      favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons' }
+    },
+    menubar: 'favs file edit view insert format tools table help',
+    content_css: 'css/content.css'
+  });
+  // Export the document to a doc file.
+    function exportToDoc() {
+      var content = tinyMCE.get('myTextarea').getContent();
+      var blob = new Blob([content], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+      var fileName = document.getElementById('fileName').value + '.html';
+      var link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = fileName;
+      link.click();
+    }
+
+    // Import a doc file into the editor.
+    function importFromDoc() {
+      var fileInput = document.getElementById('fileToImport');
+      var file = fileInput.files[0];
+
+      if (file) {
+        var fileReader = new FileReader();
+        fileReader.onload = function(fileLoadedEvent) {
+          var content = fileLoadedEvent.target.result;
+          tinyMCE.get('myTextarea').setContent(content);
+        };
+        fileReader.readAsText(file);
+      }
+    }
+  </script>
+  <style>
+    .buttons {
+      margin-top: 1em;
+      display: flex;
+      justify-content: space-between;
+      gap: 1em;
+    }
+
+    button {
+      padding: 0.8em 1.5em;
+      font-size: 1em;
+      font-weight: bold;
+      color: #ecf0f1;
+      background-color: #3ccde769;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2bc05d;
+    }
+
+    input[type="file"],
+    input[type="text"] {
+      padding: 0.8em;
+      font-size: 1em;
+      border: 1px solid #bdc3c7;
+      border-radius: 5px;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 0.8em 1.5em;
+      font-size: 1em;
+      font-weight: bold;
+      color: #ecf0f1;
+      background-color: #3498db;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body style="background-color:dimgrey;">
+  <div style="margin-left: -1.06em; margin-top: -1.001em; margin-bottom: -0.521em;">
+    <textarea id="myTextarea" style="margin-left: -1.6em; margin-top: -0.001em; margin-bottom: -0.021em;">
+      <div><span style="font-size: 16pt;">.</span></div>
+      <div style="font-size: 20px;">&nbsp; &nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;&nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp; &nbsp; &nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;&nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;&nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;</div>
+        <div style="font-size: 20px;">
+          <div>
+            <div><span style="font-family: tahoma, arial, helvetica, sans-serif;"><span style="font-size: 14pt;"></span></span><h1>Welcome to Text Editor<h1></div>
+          
+        </div>
+      <div>&nbsp; &nbsp; &nbsp; &nbsp;</div>
+      <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>
+      <div><span style="text-align: justify;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></div>
+      <div>
+        <div style="font-size: 20px;">
+
+          <ul style="list-style-type: disclosure-closed; margin-bottom: -0.8px; margin-left: -1.31em; margin-top: -0.04em; font-size: 19px;">
+            <li style="color: rgb(255, 200, 0);"></li>
+            <li style="color: rgb(255, 200, 0);"></li>
+            <li style="color: yellow;">&nbsp;</li>
+            <li style="color: rgb(255, 200, 0);"></li>
+            <li style="color: rgb(255, 200, 0);"></li>
+            <li><span style="color: #000000; background-color: #ffffff;">&nbsp;Link"<a href="file:///D:/Ncert11/Arihant%20Mathematics%2043%20Years%20IIT%20JEE%20Solved%20Papers%20WWW.EXAMSAKHA.IN.pdf#page=650">Link</a>"</span></li>
+          </ul>
+        </div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;&nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp; &nbsp; &nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;&nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;&nbsp;</div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;</div>
+        <div style="font-size: 20px;">
+          <div>
+            <div><span style="font-family: tahoma, arial, helvetica, sans-serif;"><span style="font-size: 14pt;">x</span></span><h1>Welcome to Text Editor<h1></div>
+          </textarea>
+        </div>
+        <div style="font-size: 20px;">&nbsp; &nbsp;</div>
+        <div class="buttons">
+          <input type="file" id="fileToImport">
+          <button onclick="importFromDoc()">Import Document</button>
+          <button onclick="exportToDoc()">Export Document</button>
+          <input type="text" id="fileName">
+        </div>
+        </span>
+    </div>
+  </div>
+</body>
+</html>
